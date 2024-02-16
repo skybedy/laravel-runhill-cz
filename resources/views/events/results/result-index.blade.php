@@ -94,27 +94,6 @@
 
 
 
-        <script>
-
-          $('a').on('click', function () {
-      var value = gpx_test_file.trim();
-      //console.log(value);
-      //if (!value) { return alert("Vložte do textového pole obsah GPX souboru"); }
-      var m = new SMap(JAK.gel("m"));
-      var xmlDoc = JAK.XML.createDocument(value);
-
-      var gpx = new SMap.Layer.GPX(xmlDoc, null, {maxPoints:500}); /* GPX vrstva */
-      m.addDefaultLayer(SMap.DEF_BASE).enable();
-      m.addLayer(gpx); /* Přidáme ji do mapy */
-      m.addDefaultControls();
-      gpx.enable();    /* Zapnout vrstvu */
-      gpx.fit();
-
-
-
-        return false;
-    })
-
 
 
 

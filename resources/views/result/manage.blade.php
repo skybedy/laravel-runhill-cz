@@ -12,21 +12,30 @@
                         </div>
                     @endif
 
-                        <table>
+                    <div class="overflow-auto">
+                        <table id="result_table" class="hidden md:table table-auto border-collapse w-full mt-5">
+
 
                         @foreach ($results as $result)
                             @if (count($result->results) > 0)
-                                <tr><td colspan="3">{{ $result->name }}</td></tr>
+                                <tr><td class="text-center text-red-600 underline py-3 text-5xl">{{ $result->name }}</td><td colspan="3"></td></tr>
+                                <tr class="text-center">
+                                    <th class="border-none">Datum</th>
+                                    <th class="border-none px-2">Čas</th>
+                                    <th class="border-none px-2">Tempo</th>
+                                    <th class="border-none px-2"></th>
+
+                                </tr>
 
                                 @foreach ($result->results as $result)
-                                    <tr>
-                                        <td>{{ $carbon::parse($result['finish_time_date'])->format('j.n.') }}</td>
-                                        <td>{{ $result['finish_time'] }}</td>
-                                        <td>{{ $result['pace'] }}</td>
-                                        <td>
+                                    <tr class="text-center odd:bg-gray-100 even:bg-white">
+                                        <td class="border">{{ $carbon::parse($result['finish_time_date'])->format('j.n.') }}</td>
+                                        <td class="border">{{ $result['finish_time'] }}</td>
+                                        <td class="border">{{ $result['pace'] }}</td>
+                                        <td class="border py-1">
                                             <form>
                                                 <input type="hidden" name="result_id" value="{{ $result['id'] }}">
-                                                <input type="submit" value="Smazat">
+                                                <input type="submit" class="px-3 bg-red-500 border-2 border-red-600  text-white rounded cursor-pointer" value="Smazat">
                                             </form>
                                         </td>
                                     </tr>
